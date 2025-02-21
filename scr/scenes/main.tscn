@@ -1,13 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctjvcrwlbndts"]
+[gd_scene load_steps=4 format=3 uid="uid://ctjvcrwlbndts"]
 
 [ext_resource type="Script" path="res://scripts/app_controller.gd" id="1_3bv66"]
+[ext_resource type="PackedScene" uid="uid://c51i5tuysakgo" path="res://scenes/splashscreen.tscn" id="2_n6bs8"]
+[ext_resource type="PackedScene" uid="uid://bhsa0sj2rnie1" path="res://scenes/transition_controller.tscn" id="3_fmec3"]
 
-[node name="AppController" type="Node" node_paths=PackedStringArray("gui")]
+[node name="AppController" type="Node" node_paths=PackedStringArray("gui", "transition_controller")]
 script = ExtResource("1_3bv66")
 gui = NodePath("GUI")
+transition_controller = NodePath("TransitionController")
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SplashScreenManager" parent="GUI" instance=ExtResource("2_n6bs8")]
+layout_mode = 1
+
+[node name="TransitionController" parent="." instance=ExtResource("3_fmec3")]

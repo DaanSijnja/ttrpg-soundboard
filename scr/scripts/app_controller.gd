@@ -1,3 +1,7 @@
+# Sources used:
+# 1. https://www.youtube.com/watch?v=32h8BR0FqdI&list=PLEHvj4yeNfeGiG6ZJXDymk5dYBAjCGiwe&index=4
+#
+
 class_name AppController extends Node
 
 @export var gui : Control

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://c51i5tuysakgo"]
+
+[ext_resource type="Script" path="res://scripts/splashscreen/splashscreen_manager.gd" id="1_25uvs"]
+[ext_resource type="Texture2D" uid="uid://c3r5f7op0arhy" path="res://assets/sprites/splashscreen/logo_large_monochrome_dark.png" id="1_qfjht"]
+[ext_resource type="Texture2D" uid="uid://ckjhdy6m65xu5" path="res://assets/sprites/splashscreen/splashscreen_myself_icon.png" id="3_fqe22"]
+
+[node name="SplashScreenManager" type="Control" node_paths=PackedStringArray("splash_screen_container", "version_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_25uvs")
+splash_screen_container = NodePath("SplashScreenContainer")
+version_label = NodePath("Label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "v0.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SplashScreenContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen1" type="TextureRect" parent="SplashScreenContainer"]
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("1_qfjht")
+
+[node name="Screen2" type="TextureRect" parent="SplashScreenContainer"]
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("3_fqe22")

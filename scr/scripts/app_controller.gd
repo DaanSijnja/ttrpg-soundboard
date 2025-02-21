@@ -11,6 +11,7 @@ var current_gui_scene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.app_controller = self
+	current_gui_scene = $GUI/SplashScreenManager
 
 func change_gui_scene(new_scene : String, delete : bool = true, keep_running : bool = false) -> void:
 	if current_gui_scene != null:

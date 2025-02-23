@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6udtacnbbs3y"]
+[gd_scene load_steps=6 format=3 uid="uid://b6udtacnbbs3y"]
 
-[ext_resource type="Script" path="res://scripts/title_bar.gd" id="1_g2aeg"]
+[ext_resource type="Script" path="res://scripts/application/title_bar.gd" id="1_g2aeg"]
 [ext_resource type="Texture2D" uid="uid://xyfmanjmyqn0" path="res://assets/sprites/application/titlebar/minimize_window.png" id="2_qdqnj"]
 [ext_resource type="Texture2D" uid="uid://hhiuc1e66jif" path="res://assets/sprites/application/titlebar/maximize_window.png" id="3_bu2es"]
 [ext_resource type="Texture2D" uid="uid://bb5g67s5pypwh" path="res://assets/sprites/application/titlebar/close_window.png" id="3_viv5u"]
+[ext_resource type="Script" path="res://scripts/application/resize_handeler.gd" id="5_4d48w"]
 
 [node name="Application" type="Control"]
 layout_mode = 3
@@ -15,6 +16,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TitleBar" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -59,7 +61,213 @@ layout_mode = 2
 icon = ExtResource("3_viv5u")
 flat = true
 
+[node name="ResizeHandelers" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerBottom" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -5.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+resize_direction = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerBottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerTop" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_right = -5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerTop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerLeft" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = -5.0
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+resize_direction = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerRight" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = 5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+resize_direction = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerTopLeft" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(3, 3)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 5.0
+offset_bottom = 5.0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+resize_direction = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerTopLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerTopRight" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(3, 3)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -5.0
+offset_bottom = 5.0
+grow_horizontal = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+resize_direction = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerTopRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerBottomLeft" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(3, 3)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = 5.0
+grow_vertical = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+resize_direction = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerBottomLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResizeHandelerBottomRight" type="Control" parent="ResizeHandelers"]
+custom_minimum_size = Vector2(3, 3)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 9
+script = ExtResource("5_4d48w")
+resize_direction = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerBottomRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [connection signal="gui_input" from="TitleBar" to="TitleBar" method="_on_gui_input"]
 [connection signal="pressed" from="TitleBar/WindowButtons/Minimize" to="TitleBar" method="_on_minimize_pressed"]
 [connection signal="pressed" from="TitleBar/WindowButtons/Maximize" to="TitleBar" method="_on_maximize_pressed"]
 [connection signal="pressed" from="TitleBar/WindowButtons/Close" to="TitleBar" method="_on_close_pressed"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerBottom" to="ResizeHandelers/ResizeHandelerBottom" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerTop" to="ResizeHandelers/ResizeHandelerTop" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerLeft" to="ResizeHandelers/ResizeHandelerLeft" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerRight" to="ResizeHandelers/ResizeHandelerRight" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerTopLeft" to="ResizeHandelers/ResizeHandelerTopLeft" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerTopRight" to="ResizeHandelers/ResizeHandelerTopRight" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerBottomLeft" to="ResizeHandelers/ResizeHandelerBottomLeft" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerBottomRight" to="ResizeHandelers/ResizeHandelerBottomRight" method="_on_gui_input"]

@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://b6udtacnbbs3y"]
+[gd_scene load_steps=5 format=3 uid="uid://b6udtacnbbs3y"]
+
+[ext_resource type="Script" path="res://scripts/title_bar.gd" id="1_g2aeg"]
+[ext_resource type="Texture2D" uid="uid://xyfmanjmyqn0" path="res://assets/sprites/application/titlebar/minimize_window.png" id="2_qdqnj"]
+[ext_resource type="Texture2D" uid="uid://hhiuc1e66jif" path="res://assets/sprites/application/titlebar/maximize_window.png" id="3_bu2es"]
+[ext_resource type="Texture2D" uid="uid://bb5g67s5pypwh" path="res://assets/sprites/application/titlebar/close_window.png" id="3_viv5u"]
 
 [node name="Application" type="Control"]
 layout_mode = 3
@@ -7,3 +12,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_g2aeg")
+
+[node name="Background" type="PanelContainer" parent="TitleBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="WindowButtons" type="HBoxContainer" parent="TitleBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -84.0
+offset_bottom = 40.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Minimize" type="Button" parent="TitleBar/WindowButtons"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("2_qdqnj")
+flat = true
+
+[node name="Maximize" type="Button" parent="TitleBar/WindowButtons"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("3_bu2es")
+flat = true
+
+[node name="Close" type="Button" parent="TitleBar/WindowButtons"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("3_viv5u")
+flat = true
+
+[connection signal="gui_input" from="TitleBar" to="TitleBar" method="_on_gui_input"]
+[connection signal="pressed" from="TitleBar/WindowButtons/Minimize" to="TitleBar" method="_on_minimize_pressed"]
+[connection signal="pressed" from="TitleBar/WindowButtons/Maximize" to="TitleBar" method="_on_maximize_pressed"]
+[connection signal="pressed" from="TitleBar/WindowButtons/Close" to="TitleBar" method="_on_close_pressed"]

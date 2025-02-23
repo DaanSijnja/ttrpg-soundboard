@@ -40,10 +40,6 @@ func _ready() -> void:
 	
 	if hide_in_runtime:
 		get_child(0).set_visible(false)
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _resize_window():
 	if _following:
@@ -65,12 +61,9 @@ func _resize_window():
 		elif resize_direction == ResizeDirection.RIGHT or resize_direction == ResizeDirection.BOTTOM_RIGHT or resize_direction == ResizeDirection.TOP_RIGHT:
 			new_size.x = get_global_mouse_position().x + _mouse_offset.x
 	
-		
-
 		DisplayServer.window_set_size(new_size)
 		DisplayServer.window_set_position(new_pos)
 		
-
 func _on_gui_input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseMotion:
@@ -87,4 +80,3 @@ func _on_gui_input(event: InputEvent) -> void:
 				_following = true
 			else:
 				_following = false
-	

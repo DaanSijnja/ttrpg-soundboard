@@ -44,10 +44,6 @@ func _on_gui_input(event: InputEvent) -> void:
 func _on_minimize_pressed() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
 
-func _on_close_pressed() -> void:
-	## add some saving or warning (later in version v1.0 or later)
-	get_tree().quit()
-	
 func _on_maximize_pressed() -> void:
 	
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MAXIMIZED:
@@ -56,4 +52,7 @@ func _on_maximize_pressed() -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 		$WindowButtons/Maximize.icon = load("res://assets/sprites/application/titlebar/restore_window.png")
-		
+
+func _on_close_pressed() -> void:
+	## add some saving or warning (later in version v1.0 or later)
+	get_tree().quit()

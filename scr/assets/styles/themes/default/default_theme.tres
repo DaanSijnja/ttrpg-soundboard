@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bp06ya462w4my"]
+
+[ext_resource type="StyleBox" uid="uid://c6fy4ba8ovapt" path="res://assets/styles/themes/default/application_background.tres" id="1_fmvbq"]
+[ext_resource type="StyleBox" uid="uid://smc6ufet1t2m" path="res://assets/styles/themes/default/titlebar/titlebar_button_normal.tres" id="1_iiuaa"]
+[ext_resource type="StyleBox" uid="uid://bsgbf4aq3hr7a" path="res://assets/styles/themes/default/titlebar/titlebar_button_hover.tres" id="1_ndk6w"]
+[ext_resource type="StyleBox" uid="uid://cmcw5k2re0adk" path="res://assets/styles/themes/default/titlebar/titlebar_background.tres" id="1_rjcg3"]
+[ext_resource type="StyleBox" uid="uid://cf5mf7fdbvq7s" path="res://assets/styles/themes/default/h1_container.tres" id="2_wmjxa"]
+[ext_resource type="StyleBox" uid="uid://cj6m4euyen11u" path="res://assets/styles/themes/default/titlebar/titlebar_button_hover_close.tres" id="3_su1c4"]
+
+[resource]
+BackgroundPanel/base_type = &"Panel"
+BackgroundPanel/styles/panel = ExtResource("1_fmvbq")
+H1Container/base_type = &"PanelContainer"
+H1Container/styles/panel = ExtResource("2_wmjxa")
+SplitContainer/constants/autohide = 1
+SplitContainer/constants/minimum_grab_thickness = 1
+SplitContainer/constants/separation = 4
+TitlebarButton/base_type = &"Button"
+TitlebarButton/styles/hover = ExtResource("1_ndk6w")
+TitlebarButton/styles/normal = ExtResource("1_iiuaa")
+TitlebarButton/styles/pressed = ExtResource("1_iiuaa")
+TitlebarCloseButton/base_type = &"Button"
+TitlebarCloseButton/constants/align_to_largest_stylebox = 0
+TitlebarCloseButton/constants/h_separation = 0
+TitlebarCloseButton/constants/icon_max_width = 0
+TitlebarCloseButton/constants/outline_size = 0
+TitlebarCloseButton/font_sizes/font_size = 16
+TitlebarCloseButton/styles/hover = ExtResource("3_su1c4")
+TitlebarCloseButton/styles/normal = ExtResource("1_iiuaa")
+TitlebarCloseButton/styles/pressed = ExtResource("1_iiuaa")
+TitlebarPanel/base_type = &"PanelContainer"
+TitlebarPanel/styles/panel = ExtResource("1_rjcg3")
+UIContainer/base_type = &"MarginContainer"
+UIContainer/constants/margin_bottom = 6
+UIContainer/constants/margin_left = 6
+UIContainer/constants/margin_right = 6
+UIContainer/constants/margin_top = 6
+WindowButtonHolder/base_type = &"HBoxContainer"

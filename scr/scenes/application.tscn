@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6udtacnbbs3y"]
+[gd_scene load_steps=7 format=3 uid="uid://b6udtacnbbs3y"]
 
 [ext_resource type="Script" path="res://scripts/application/title_bar.gd" id="1_g2aeg"]
+[ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="2_gjw40"]
 [ext_resource type="Texture2D" uid="uid://xyfmanjmyqn0" path="res://assets/sprites/application/titlebar/minimize_window.png" id="2_qdqnj"]
 [ext_resource type="Texture2D" uid="uid://hhiuc1e66jif" path="res://assets/sprites/application/titlebar/maximize_window.png" id="3_bu2es"]
 [ext_resource type="Texture2D" uid="uid://bb5g67s5pypwh" path="res://assets/sprites/application/titlebar/close_window.png" id="3_viv5u"]
-[ext_resource type="Script" path="res://scripts/application/resize_handeler.gd" id="5_4d48w"]
+[ext_resource type="Script" path="res://scripts/application/window_resize_handeler.gd" id="5_4d48w"]
 
 [node name="Application" type="Control"]
 layout_mode = 3
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="TitleBar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 40)
@@ -23,6 +25,7 @@ anchor_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 2
 script = ExtResource("1_g2aeg")
+metadata/_edit_lock_ = true
 
 [node name="Background" type="PanelContainer" parent="TitleBar"]
 layout_mode = 1
@@ -32,6 +35,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"TitlebarPanel"
 
 [node name="WindowButtons" type="HBoxContainer" parent="TitleBar"]
 layout_mode = 1
@@ -44,24 +49,140 @@ grow_horizontal = 0
 mouse_filter = 2
 
 [node name="Minimize" type="Button" parent="TitleBar/WindowButtons"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"TitlebarButton"
 icon = ExtResource("2_qdqnj")
-flat = true
+icon_alignment = 1
 
 [node name="Maximize" type="Button" parent="TitleBar/WindowButtons"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"TitlebarButton"
 icon = ExtResource("3_bu2es")
-flat = true
+icon_alignment = 1
 
 [node name="Close" type="Button" parent="TitleBar/WindowButtons"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"TitlebarCloseButton"
 icon = ExtResource("3_viv5u")
-flat = true
+icon_alignment = 1
 
-[node name="ResizeHandelers" type="Control" parent="."]
+[node name="EditorButtons" type="HBoxContainer" parent="TitleBar"]
+layout_mode = 1
+offset_left = 40.0
+offset_right = 288.0
+offset_bottom = 40.0
+
+[node name="ProjectMenuButton" type="MenuButton" parent="TitleBar/EditorButtons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_gjw40")
+text = "Project"
+
+[node name="EditorMenuButton" type="MenuButton" parent="TitleBar/EditorButtons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_gjw40")
+text = "Editor"
+
+[node name="HelpMenuButton" type="MenuButton" parent="TitleBar/EditorButtons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_gjw40")
+text = "Help"
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"BackgroundPanel"
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"UIContainer"
+
+[node name="MainContainer" type="HSplitContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"SplitContainer"
+split_offset = 100
+
+[node name="LeftContainer" type="VSplitContainer" parent="UI/MarginContainer/MainContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"SplitContainer"
+split_offset = 700
+
+[node name="ActiveSoundPanel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/LeftContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H1Container"
+
+[node name="ControllPanel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/LeftContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H1Container"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="UI/MarginContainer/MainContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+split_offset = 1600
+
+[node name="MiddleContainer" type="VSplitContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+split_offset = 700
+
+[node name="SoundsPanel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H1Container"
+
+[node name="LoopEditorPanel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H1Container"
+
+[node name="EditorPanel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H1Container"
+
+[node name="WindowResizeHandelers" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,8 +190,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="ResizeHandelerBottom" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerBottom" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
 anchors_preset = 12
@@ -86,8 +208,9 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
 resize_direction = 1
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerBottom"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerBottom"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +219,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ResizeHandelerTop" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerTop" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 1
 anchors_preset = 10
@@ -108,8 +231,9 @@ grow_horizontal = 2
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerTop"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerTop"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,8 +241,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="ResizeHandelerLeft" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerLeft" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 1
 anchors_preset = 9
@@ -131,8 +256,9 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
 resize_direction = 2
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerLeft"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerLeft"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,8 +266,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="ResizeHandelerRight" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerRight" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -157,8 +284,9 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
 resize_direction = 3
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerRight"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerRight"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,8 +294,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="ResizeHandelerTopLeft" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerTopLeft" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(3, 3)
 layout_mode = 1
 anchors_preset = 0
@@ -177,8 +306,9 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
 resize_direction = 4
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerTopLeft"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerTopLeft"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,8 +316,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="ResizeHandelerTopRight" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerTopRight" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(3, 3)
 layout_mode = 1
 anchors_preset = 1
@@ -200,8 +331,9 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
 resize_direction = 5
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerTopRight"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerTopRight"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,8 +341,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="ResizeHandelerBottomLeft" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerBottomLeft" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(3, 3)
 layout_mode = 1
 anchors_preset = 2
@@ -223,8 +356,9 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
 resize_direction = 6
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerBottomLeft"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerBottomLeft"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,8 +366,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="ResizeHandelerBottomRight" type="Control" parent="ResizeHandelers"]
+[node name="ResizeHandelerBottomRight" type="Control" parent="WindowResizeHandelers"]
 custom_minimum_size = Vector2(3, 3)
 layout_mode = 1
 anchors_preset = 3
@@ -249,8 +384,9 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 9
 script = ExtResource("5_4d48w")
 resize_direction = 7
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ResizeHandelers/ResizeHandelerBottomRight"]
+[node name="PanelContainer" type="PanelContainer" parent="WindowResizeHandelers/ResizeHandelerBottomRight"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -258,16 +394,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [connection signal="gui_input" from="TitleBar" to="TitleBar" method="_on_gui_input"]
 [connection signal="pressed" from="TitleBar/WindowButtons/Minimize" to="TitleBar" method="_on_minimize_pressed"]
 [connection signal="pressed" from="TitleBar/WindowButtons/Maximize" to="TitleBar" method="_on_maximize_pressed"]
 [connection signal="pressed" from="TitleBar/WindowButtons/Close" to="TitleBar" method="_on_close_pressed"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerBottom" to="ResizeHandelers/ResizeHandelerBottom" method="_on_gui_input"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerTop" to="ResizeHandelers/ResizeHandelerTop" method="_on_gui_input"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerLeft" to="ResizeHandelers/ResizeHandelerLeft" method="_on_gui_input"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerRight" to="ResizeHandelers/ResizeHandelerRight" method="_on_gui_input"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerTopLeft" to="ResizeHandelers/ResizeHandelerTopLeft" method="_on_gui_input"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerTopRight" to="ResizeHandelers/ResizeHandelerTopRight" method="_on_gui_input"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerBottomLeft" to="ResizeHandelers/ResizeHandelerBottomLeft" method="_on_gui_input"]
-[connection signal="gui_input" from="ResizeHandelers/ResizeHandelerBottomRight" to="ResizeHandelers/ResizeHandelerBottomRight" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerBottom" to="WindowResizeHandelers/ResizeHandelerBottom" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerTop" to="WindowResizeHandelers/ResizeHandelerTop" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerLeft" to="WindowResizeHandelers/ResizeHandelerLeft" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerRight" to="WindowResizeHandelers/ResizeHandelerRight" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerTopLeft" to="WindowResizeHandelers/ResizeHandelerTopLeft" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerTopRight" to="WindowResizeHandelers/ResizeHandelerTopRight" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerBottomLeft" to="WindowResizeHandelers/ResizeHandelerBottomLeft" method="_on_gui_input"]
+[connection signal="gui_input" from="WindowResizeHandelers/ResizeHandelerBottomRight" to="WindowResizeHandelers/ResizeHandelerBottomRight" method="_on_gui_input"]

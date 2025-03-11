@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://nnvqpou5m3ri"]
+[gd_scene load_steps=2 format=3 uid="uid://nnvqpou5m3ri"]
+
+[ext_resource type="Theme" uid="uid://dc23p2o5n4m75" path="res://assets/styles/themes/titlebar/titlebar_theme.tres" id="1_juv4o"]
 
 [node name="TestUi" type="Control"]
 layout_mode = 3
@@ -7,3 +9,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_juv4o")
+text = "TEST 1"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_juv4o")
+text = "TEST 1"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_juv4o")
+text = "TEST 1"
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_juv4o")
+text = "TEST 1"
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_right = 97.0
+offset_bottom = 25.0
+theme = ExtResource("1_juv4o")
+text = "Menu"

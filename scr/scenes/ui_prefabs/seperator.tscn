@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://mmy50mdiii0b"]
+
+[ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="1_u8e34"]
+[ext_resource type="Script" path="res://scripts/application/UI/seperator.gd" id="2_eioc8"]
+
+[node name="Seperator" type="Panel"]
+custom_minimum_size = Vector2(80, 24)
+offset_bottom = 24.0
+theme = ExtResource("1_u8e34")
+theme_type_variation = &"SettingSeperator"
+script = ExtResource("2_eioc8")
+title = "Text"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_u8e34")
+theme_type_variation = &"H1BoldLabel"
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1

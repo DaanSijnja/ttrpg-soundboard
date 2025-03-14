@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6udtacnbbs3y"]
+[gd_scene load_steps=9 format=3 uid="uid://b6udtacnbbs3y"]
 
 [ext_resource type="Script" path="res://scripts/application/title_bar.gd" id="1_g2aeg"]
 [ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="2_gjw40"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://hhiuc1e66jif" path="res://assets/sprites/application/titlebar/maximize_window.png" id="3_bu2es"]
 [ext_resource type="Texture2D" uid="uid://bb5g67s5pypwh" path="res://assets/sprites/application/titlebar/close_window.png" id="3_viv5u"]
 [ext_resource type="Script" path="res://scripts/application/window_resize_handeler.gd" id="5_4d48w"]
+[ext_resource type="PackedScene" uid="uid://cl0c2yjepdeuj" path="res://scenes/ui_prefabs/dropdown_button.tscn" id="6_adc73"]
+[ext_resource type="PackedScene" uid="uid://mmy50mdiii0b" path="res://scenes/ui_prefabs/seperator.tscn" id="6_dbwoe"]
 
 [node name="Application" type="Control"]
 layout_mode = 3
@@ -176,13 +178,97 @@ theme = ExtResource("2_gjw40")
 theme_type_variation = &"H1Container"
 
 [node name="EditorPanel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("2_gjw40")
 theme_type_variation = &"H1Container"
 
-[node name="WindowResizeHandelers" type="Control" parent="."]
+[node name="TabContainer" type="TabContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel"]
+layout_mode = 2
+current_tab = 0
+tab_focus_mode = 0
+
+[node name="Editor" type="TabBar" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="H2Container" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H2Container"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="SeperatorInfo" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
+layout_mode = 2
+title = "Info"
+
+[node name="Name" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("v_box") instance=ExtResource("6_adc73")]
+layout_mode = 2
+title = "Name"
+v_box = NodePath("../NameContainer")
+
+[node name="NameContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer"]
 visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Panel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer/NameContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer/NameContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer/NameContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="FileLocation" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+layout_mode = 2
+title = "File Location"
+
+[node name="Tags" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+layout_mode = 2
+title = "Tags"
+
+[node name="Other" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+layout_mode = 2
+title = "Other"
+
+[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Volume" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
+layout_mode = 2
+title = "Volume"
+
+[node name="NormalizedVolume" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+layout_mode = 2
+title = "Normalized Volume"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Loops" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
+layout_mode = 2
+title = "Loops"
+
+[node name="WindowResizeHandelers" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

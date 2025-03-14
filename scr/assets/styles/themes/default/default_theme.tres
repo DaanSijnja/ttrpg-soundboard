@@ -1,20 +1,51 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bp06ya462w4my"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://bp06ya462w4my"]
 
 [ext_resource type="StyleBox" uid="uid://c6fy4ba8ovapt" path="res://assets/styles/themes/default/application_background.tres" id="1_fmvbq"]
 [ext_resource type="StyleBox" uid="uid://smc6ufet1t2m" path="res://assets/styles/themes/default/titlebar/titlebar_button_normal.tres" id="1_iiuaa"]
 [ext_resource type="StyleBox" uid="uid://bsgbf4aq3hr7a" path="res://assets/styles/themes/default/titlebar/titlebar_button_hover.tres" id="1_ndk6w"]
 [ext_resource type="StyleBox" uid="uid://cmcw5k2re0adk" path="res://assets/styles/themes/default/titlebar/titlebar_background.tres" id="1_rjcg3"]
-[ext_resource type="StyleBox" uid="uid://cf5mf7fdbvq7s" path="res://assets/styles/themes/default/h1_container.tres" id="2_wmjxa"]
+[ext_resource type="StyleBox" uid="uid://cehc7npvy0ead" path="res://assets/styles/themes/default/dropdown/dropdown_hover.tres" id="2_5hvgc"]
+[ext_resource type="StyleBox" uid="uid://cf5mf7fdbvq7s" path="res://assets/styles/themes/default/containers/h1_container.tres" id="2_xb03b"]
+[ext_resource type="StyleBox" uid="uid://prn3sfdup2e1" path="res://assets/styles/themes/default/tabs/tab_panel.tres" id="3_1ac0o"]
+[ext_resource type="StyleBox" uid="uid://ytaloe7xbamp" path="res://assets/styles/themes/default/containers/h2_container.tres" id="3_8nyfg"]
+[ext_resource type="StyleBox" uid="uid://dnnht0qr1ueqj" path="res://assets/styles/themes/default/dropdown/dropdown_normal.tres" id="3_lhhif"]
 [ext_resource type="StyleBox" uid="uid://cj6m4euyen11u" path="res://assets/styles/themes/default/titlebar/titlebar_button_hover_close.tres" id="3_su1c4"]
+[ext_resource type="StyleBox" uid="uid://bft2qu2q14cj" path="res://assets/styles/themes/default/setting_seperator_panel.tres" id="3_wy5xb"]
+[ext_resource type="StyleBox" uid="uid://ctncn7bdscs0e" path="res://assets/styles/themes/default/tabs/tab_bar_selected_pannel.tres" id="4_5feru"]
+[ext_resource type="StyleBox" uid="uid://2m7a6ghsf1f8" path="res://assets/styles/themes/default/tabs/tab_bar_hoverd_pannel.tres" id="4_hqg1k"]
+[ext_resource type="StyleBox" uid="uid://cfxbbesajm1bv" path="res://assets/styles/themes/default/tabs/tab_bar_unselected_pannel.tres" id="5_64omo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1c1e2"]
 
 [resource]
 BackgroundPanel/base_type = &"Panel"
 BackgroundPanel/styles/panel = ExtResource("1_fmvbq")
+DropdownButton/base_type = &"Button"
+DropdownButton/styles/focus = SubResource("StyleBoxEmpty_1c1e2")
+DropdownButton/styles/hover = ExtResource("2_5hvgc")
+DropdownButton/styles/normal = ExtResource("3_lhhif")
+DropdownButton/styles/pressed = ExtResource("3_lhhif")
+H1BoldLabel/base_type = &"Label"
+H1BoldLabel/colors/font_color = Color(0.247059, 0.247059, 0.247059, 1)
+H1BoldLabel/colors/font_outline_color = Color(0.247059, 0.247059, 0.247059, 1)
+H1BoldLabel/constants/outline_size = 1
 H1Container/base_type = &"PanelContainer"
-H1Container/styles/panel = ExtResource("2_wmjxa")
+H1Container/styles/panel = ExtResource("2_xb03b")
+H2Container/base_type = &"PanelContainer"
+H2Container/styles/panel = ExtResource("3_8nyfg")
+SettingSeperator/base_type = &"Panel"
+SettingSeperator/styles/panel = ExtResource("3_wy5xb")
 SplitContainer/constants/autohide = 1
 SplitContainer/constants/minimum_grab_thickness = 1
 SplitContainer/constants/separation = 4
+TabContainer/colors/font_disabled_color = Color(0.6, 0.6, 0.6, 1)
+TabContainer/colors/font_hovered_color = Color(0.247059, 0.247059, 0.247059, 1)
+TabContainer/colors/font_selected_color = Color(0.247059, 0.247059, 0.247059, 1)
+TabContainer/constants/side_margin = 0
+TabContainer/styles/panel = ExtResource("3_1ac0o")
+TabContainer/styles/tab_hovered = ExtResource("4_hqg1k")
+TabContainer/styles/tab_selected = ExtResource("4_5feru")
+TabContainer/styles/tab_unselected = ExtResource("5_64omo")
 TitlebarButton/base_type = &"Button"
 TitlebarButton/styles/hover = ExtResource("1_ndk6w")
 TitlebarButton/styles/normal = ExtResource("1_iiuaa")

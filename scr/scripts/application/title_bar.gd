@@ -9,7 +9,7 @@ extends Control
 var _following : bool = false
 var _drag_offset : Vector2 = Vector2()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _move_application_window() -> void:

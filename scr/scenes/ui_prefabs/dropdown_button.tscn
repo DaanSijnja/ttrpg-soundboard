@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl0c2yjepdeuj"]
+
+[ext_resource type="Script" path="res://scripts/application/UI/dropdown_button.gd" id="1_ge2m1"]
+[ext_resource type="Texture2D" uid="uid://e56qgrkp5aa0" path="res://assets/sprites/application/UI/open_close_arrow.png" id="2_ibqvy"]
+[ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="3_0vf4e"]
+
+[node name="DropdownButton" type="Button"]
+custom_minimum_size = Vector2(100, 24)
+theme = ExtResource("3_0vf4e")
+theme_type_variation = &"DropdownButton"
+script = ExtResource("1_ge2m1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+pivot_offset = Vector2(8.5, 8.5)
+texture = ExtResource("2_ibqvy")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 65.0
+offset_bottom = 23.0
+theme = ExtResource("3_0vf4e")
+theme_type_variation = &"H1BoldLabel"
+text = "Text
+"
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

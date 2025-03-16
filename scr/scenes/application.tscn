@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6udtacnbbs3y"]
+[gd_scene load_steps=13 format=3 uid="uid://b6udtacnbbs3y"]
 
 [ext_resource type="Script" path="res://scripts/application/title_bar.gd" id="1_g2aeg"]
 [ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="2_gjw40"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://scripts/application/window_resize_handeler.gd" id="5_4d48w"]
 [ext_resource type="PackedScene" uid="uid://cl0c2yjepdeuj" path="res://scenes/ui_prefabs/dropdown_button.tscn" id="6_adc73"]
 [ext_resource type="PackedScene" uid="uid://mmy50mdiii0b" path="res://scenes/ui_prefabs/seperator.tscn" id="6_dbwoe"]
+[ext_resource type="PackedScene" uid="uid://b8okedwx3ixj6" path="res://scenes/ui_prefabs/SettingHolders/setting_text_edit.tscn" id="8_hfein"]
+[ext_resource type="PackedScene" uid="uid://dal3mu1i562bq" path="res://scenes/ui_prefabs/SettingHolders/setting_file_selection.tscn" id="9_kl4vt"]
+[ext_resource type="PackedScene" uid="uid://1xtngdp6tnv0" path="res://scenes/ui_prefabs/SettingHolders/setting_value_info.tscn" id="10_xolto"]
+[ext_resource type="PackedScene" uid="uid://c5g6vfkf08gtn" path="res://scenes/ui_prefabs/SettingHolders/setting_slider.tscn" id="11_r2pg3"]
 
 [node name="Application" type="Control"]
 layout_mode = 3
@@ -194,79 +198,139 @@ metadata/_tab_index = 0
 
 [node name="H2Container" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_gjw40")
 theme_type_variation = &"H2Container"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container"]
+[node name="Control" type="Control" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="SeperatorInfo" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
+[node name="SeperatorInfo" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
 layout_mode = 2
 title = "Info"
 
-[node name="Name" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("v_box") instance=ExtResource("6_adc73")]
+[node name="Name" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("v_box") instance=ExtResource("6_adc73")]
 layout_mode = 2
+tooltip_text = "
+"
 title = "Name"
+open = true
 v_box = NodePath("../NameContainer")
 
-[node name="NameContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer"]
-visible = false
+[node name="NameContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Panel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer/NameContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="NameEdit" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer/NameContainer" instance=ExtResource("8_hfein")]
+layout_mode = 2
+title = "Display Name"
+default_text = "New Music"
+
+[node name="FileLocation" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("v_box") instance=ExtResource("6_adc73")]
+layout_mode = 2
+title = "File"
+open = true
+v_box = NodePath("../FileLocationContainer")
+
+[node name="FileLocationContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="SettingFileSelection" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer/FileLocationContainer" instance=ExtResource("9_kl4vt")]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer/NameContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="SettingFileSize" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer/FileLocationContainer" instance=ExtResource("10_xolto")]
 layout_mode = 2
+title = "File Size"
+value = "0 kB"
 
-[node name="Panel3" type="Panel" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer/NameContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="SettingAudioLength" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer/FileLocationContainer" instance=ExtResource("10_xolto")]
 layout_mode = 2
+title = "Audio Length"
+value = "00:00 "
 
-[node name="FileLocation" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
-layout_mode = 2
-title = "File Location"
-
-[node name="Tags" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+[node name="Tags" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
 layout_mode = 2
 title = "Tags"
 
-[node name="Other" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+[node name="Other" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("v_box") instance=ExtResource("6_adc73")]
 layout_mode = 2
 title = "Other"
+open = true
+v_box = NodePath("../OtherContainer")
 
-[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer"]
+[node name="OtherContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 2
 
-[node name="Volume" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
+[node name="SettingUniqueID" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer/OtherContainer" instance=ExtResource("10_xolto")]
 layout_mode = 2
-title = "Volume"
+title = "Unique ID"
+value = "XXXXXX"
 
-[node name="NormalizedVolume" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"SettingHSeperator"
+
+[node name="Volume" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
+layout_mode = 2
+title = "Audio"
+
+[node name="NormalizedVolume" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("v_box") instance=ExtResource("6_adc73")]
 layout_mode = 2
 title = "Normalized Volume"
+open = true
+v_box = NodePath("../NormalizedVolumeContainer")
 
-[node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer"]
+[node name="NormalizedVolumeContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 2
 
-[node name="Loops" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
+[node name="SettingSlider" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer/NormalizedVolumeContainer" instance=ExtResource("11_r2pg3")]
+layout_mode = 2
+title = "Volume"
+min_value = -3.0
+max_value = 3.0
+suffix = "dB"
+
+[node name="TrimAudio" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" instance=ExtResource("6_adc73")]
+layout_mode = 2
+title = "Trim Audio"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"SettingHSeperator"
+
+[node name="Loops" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer" instance=ExtResource("6_dbwoe")]
 layout_mode = 2
 title = "Loops"
+
+[node name="HSeparator3" type="HSeparator" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel/TabContainer/Editor/H2Container/Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"SettingHSeperator"
 
 [node name="WindowResizeHandelers" type="Control" parent="."]
 layout_mode = 1

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/application/UI/seperator.gd" id="2_eioc8"]
 
 [node name="Seperator" type="Panel"]
-custom_minimum_size = Vector2(80, 24)
+custom_minimum_size = Vector2(80, 32)
 offset_bottom = 24.0
 theme = ExtResource("1_u8e34")
 theme_type_variation = &"SettingSeperator"

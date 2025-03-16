@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8okedwx3ixj6"]
+
+[ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="1_pn8ik"]
+[ext_resource type="Script" path="res://scripts/application/UI/setting_text_edit.gd" id="2_3idtc"]
+
+[node name="SettingTextEdit" type="Control"]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 32.0
+theme = ExtResource("1_pn8ik")
+script = ExtResource("2_3idtc")
+title = "Text"
+default_text = "New Text"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 16.0
+grow_vertical = 2
+theme = ExtResource("1_pn8ik")
+theme_type_variation = &"H3SettingLabel"
+text = "Text"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pn8ik")
+theme_type_variation = &"SettingLineEdit"
+text = "New Text"

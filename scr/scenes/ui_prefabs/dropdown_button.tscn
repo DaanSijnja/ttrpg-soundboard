@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="3_0vf4e"]
 
 [node name="DropdownButton" type="Button"]
-custom_minimum_size = Vector2(100, 24)
+custom_minimum_size = Vector2(100, 32)
 theme = ExtResource("3_0vf4e")
 theme_type_variation = &"DropdownButton"
 script = ExtResource("1_ge2m1")
@@ -28,11 +28,9 @@ stretch_mode = 3
 layout_mode = 0
 offset_left = 18.0
 offset_right = 65.0
-offset_bottom = 23.0
+offset_bottom = 32.0
 theme = ExtResource("3_0vf4e")
 theme_type_variation = &"H1BoldLabel"
-text = "Text
-"
 vertical_alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

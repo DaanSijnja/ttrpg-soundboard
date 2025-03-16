@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://bp06ya462w4my"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://bp06ya462w4my"]
 
 [ext_resource type="StyleBox" uid="uid://c6fy4ba8ovapt" path="res://assets/styles/themes/default/application_background.tres" id="1_fmvbq"]
 [ext_resource type="StyleBox" uid="uid://smc6ufet1t2m" path="res://assets/styles/themes/default/titlebar/titlebar_button_normal.tres" id="1_iiuaa"]
@@ -14,8 +14,37 @@
 [ext_resource type="StyleBox" uid="uid://ctncn7bdscs0e" path="res://assets/styles/themes/default/tabs/tab_bar_selected_pannel.tres" id="4_5feru"]
 [ext_resource type="StyleBox" uid="uid://2m7a6ghsf1f8" path="res://assets/styles/themes/default/tabs/tab_bar_hoverd_pannel.tres" id="4_hqg1k"]
 [ext_resource type="StyleBox" uid="uid://cfxbbesajm1bv" path="res://assets/styles/themes/default/tabs/tab_bar_unselected_pannel.tres" id="5_64omo"]
+[ext_resource type="StyleBox" uid="uid://b0bgno0m1cbgb" path="res://assets/styles/themes/default/containers/h3_container.tres" id="6_jqw4w"]
+[ext_resource type="Texture2D" uid="uid://cre8llrqys61y" path="res://assets/sprites/application/UI/icons/slider_icon.png" id="8_2ijdh"]
+[ext_resource type="Texture2D" uid="uid://c74lx4emea2od" path="res://assets/sprites/application/UI/icons/slider_tick_icon.png" id="9_xj7xs"]
+[ext_resource type="StyleBox" uid="uid://e5rah40gamk6" path="res://assets/styles/themes/default/slider/slider_grabber_area.tres" id="10_ecckt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1c1e2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eewxp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbxir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1uyy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uivf"]
+bg_color = Color(0.937255, 0.921569, 0.835294, 1)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5hn8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nbw7"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.827451, 0.815686, 0.737255, 1)
+anti_aliasing = false
 
 [resource]
 BackgroundPanel/base_type = &"Panel"
@@ -29,12 +58,51 @@ H1BoldLabel/base_type = &"Label"
 H1BoldLabel/colors/font_color = Color(0.247059, 0.247059, 0.247059, 1)
 H1BoldLabel/colors/font_outline_color = Color(0.247059, 0.247059, 0.247059, 1)
 H1BoldLabel/constants/outline_size = 1
+H1BoldLabel/font_sizes/font_size = 18
 H1Container/base_type = &"PanelContainer"
 H1Container/styles/panel = ExtResource("2_xb03b")
 H2Container/base_type = &"PanelContainer"
 H2Container/styles/panel = ExtResource("3_8nyfg")
+H3SettingLabel/base_type = &"Label"
+H3SettingLabel/colors/font_color = Color(0.247059, 0.247059, 0.247059, 1)
+H3SettingLabel/colors/font_outline_color = Color(0.247059, 0.247059, 0.247059, 1)
+H3SettingLabel/constants/outline_size = 0
+H3SettingLabel/font_sizes/font_size = 14
+H3UneditableLabel/base_type = &"Label"
+H3UneditableLabel/colors/font_color = Color(0.5, 0.5, 0.5, 1)
+H3UneditableLabel/colors/font_outline_color = Color(0.5, 0.5, 0.5, 1)
+H3UneditableLabel/constants/outline_size = 0
+H3UneditableLabel/font_sizes/font_size = 14
+LineEdit/colors/font_color = Color(0.247059, 0.247059, 0.247059, 1)
+LineEdit/colors/font_outline_color = Color(0.247059, 0.247059, 0.247059, 1)
+LineEdit/colors/font_selected_color = Color(0.247059, 0.247059, 0.247059, 1)
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_eewxp")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_cbxir")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_h1uyy")
+SettingContainer/base_type = &"MarginContainer"
+SettingHSeperator/base_type = &"HSeparator"
+SettingHSeperator/constants/separation = 8
+SettingHSeperator/styles/separator = SubResource("StyleBoxFlat_1uivf")
+SettingLineEdit/base_type = &"LineEdit"
+SettingLineEdit/colors/caret_color = Color(0.247059, 0.247059, 0.247059, 1)
+SettingLineEdit/colors/font_color = Color(0.247059, 0.247059, 0.247059, 1)
+SettingLineEdit/colors/font_uneditable_color = Color(0.5, 0.5, 0.5, 1)
+SettingLineEdit/constants/caret_width = 2
+SettingLineEdit/font_sizes/font_size = 14
+SettingLineEdit/styles/focus = SubResource("StyleBoxEmpty_h5hn8")
+SettingLineEdit/styles/normal = ExtResource("6_jqw4w")
+SettingLineEdit/styles/read_only = ExtResource("6_jqw4w")
 SettingSeperator/base_type = &"Panel"
 SettingSeperator/styles/panel = ExtResource("3_wy5xb")
+SettingSlider/base_type = &"HSlider"
+SettingSlider/constants/grabber_offset = 1
+SettingSlider/icons/grabber = ExtResource("8_2ijdh")
+SettingSlider/icons/grabber_disabled = ExtResource("8_2ijdh")
+SettingSlider/icons/grabber_highlight = ExtResource("8_2ijdh")
+SettingSlider/icons/tick = ExtResource("9_xj7xs")
+SettingSlider/styles/grabber_area = ExtResource("10_ecckt")
+SettingSlider/styles/grabber_area_highlight = ExtResource("10_ecckt")
+SettingSlider/styles/slider = SubResource("StyleBoxFlat_0nbw7")
 SplitContainer/constants/autohide = 1
 SplitContainer/constants/minimum_grab_thickness = 1
 SplitContainer/constants/separation = 4

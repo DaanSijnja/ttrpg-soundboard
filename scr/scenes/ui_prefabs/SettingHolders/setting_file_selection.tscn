@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://dal3mu1i562bq"]
+
+[ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="1_v8h4t"]
+[ext_resource type="Script" path="res://scripts/application/UI/setting_file_selection.gd" id="2_fl52j"]
+[ext_resource type="StyleBox" uid="uid://b0bgno0m1cbgb" path="res://assets/styles/themes/default/containers/h3_container.tres" id="2_je8a7"]
+[ext_resource type="Texture2D" uid="uid://nkbcrk8a3ccx" path="res://assets/sprites/application/UI/icons/open_icon.png" id="4_oln4t"]
+
+[node name="SettingFileSelection" type="Control"]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 32.0
+theme = ExtResource("1_v8h4t")
+script = ExtResource("2_fl52j")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 16.0
+grow_vertical = 2
+theme = ExtResource("1_v8h4t")
+theme_type_variation = &"H3SettingLabel"
+text = "File Name"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v8h4t")
+theme_type_variation = &"SettingLineEdit"
+theme_override_styles/panel = ExtResource("2_je8a7")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v8h4t")
+theme_type_variation = &"H3UneditableLabel"
+text = "File.mp3"
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("2_je8a7")
+icon = ExtResource("4_oln4t")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

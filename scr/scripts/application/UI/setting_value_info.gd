@@ -1,30 +1,25 @@
 @tool
-extends Panel
-
+extends Control
 @export var title : String = "":
 	set(mod_value):
 		if(title == mod_value):
 			return
-			
+		
 		title = mod_value
 		if is_node_ready():
 			_update()
-		
-@export var texture : Texture2D = null:
+			
+@export var value : String = "":
 	set(mod_value):
-		if(texture == mod_value):
+		if(value == mod_value):
 			return
 		
-		texture = mod_value
+		value = mod_value
 		if is_node_ready():
 			_update()
 
-
-
-@export_group("ChildNodes")
-@onready var label : Label = $HBoxContainer/Label 
-@onready var texture_rect : TextureRect = $HBoxContainer/TextureRect
-
+@onready var title_label = $Label
+@onready var value_label = $Panel/Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,6 +27,7 @@ func _ready() -> void:
 	
 func _update() -> void:
 	if(title != null):
-		label.text = title
+		title_label.text = title
 		
-	texture_rect.texture = texture
+	if(value != null):
+		value_label.text = value

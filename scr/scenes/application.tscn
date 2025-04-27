@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6udtacnbbs3y"]
+[gd_scene load_steps=14 format=3 uid="uid://b6udtacnbbs3y"]
 
 [ext_resource type="Script" path="res://scripts/application/title_bar.gd" id="1_g2aeg"]
 [ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="2_gjw40"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bb5g67s5pypwh" path="res://assets/sprites/application/titlebar/close_window.png" id="3_viv5u"]
 [ext_resource type="Script" path="res://scripts/application/window_resize_handeler.gd" id="5_4d48w"]
 [ext_resource type="PackedScene" uid="uid://cl0c2yjepdeuj" path="res://scenes/ui_prefabs/dropdown_button.tscn" id="6_adc73"]
+[ext_resource type="PackedScene" uid="uid://bml4xyb7k3nii" path="res://scenes/ui_prefabs/toolbar.tscn" id="6_chmh8"]
 [ext_resource type="PackedScene" uid="uid://mmy50mdiii0b" path="res://scenes/ui_prefabs/seperator.tscn" id="6_dbwoe"]
 [ext_resource type="PackedScene" uid="uid://b8okedwx3ixj6" path="res://scenes/ui_prefabs/SettingHolders/setting_text_edit.tscn" id="8_hfein"]
 [ext_resource type="PackedScene" uid="uid://dal3mu1i562bq" path="res://scenes/ui_prefabs/SettingHolders/setting_file_selection.tscn" id="9_kl4vt"]
@@ -176,6 +177,95 @@ layout_mode = 2
 theme = ExtResource("2_gjw40")
 theme_type_variation = &"H1Container"
 
+[node name="Control" type="Control" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gjw40")
+current_tab = 0
+use_hidden_tabs_for_min_size = true
+tab_focus_mode = 0
+
+[node name="Music" type="TabBar" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer"]
+layout_mode = 2
+tab_alignment = 1
+metadata/_tab_index = 0
+
+[node name="H2Container" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Music"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H2Container"
+
+[node name="Control" type="Control" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Music/H2Container"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Music/H2Container/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Music/H2Container/Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="toolbar" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Music" instance=ExtResource("6_chmh8")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_top = 0.0
+offset_right = 200.0
+offset_bottom = 32.0
+
+[node name="Sounds" type="TabBar" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer"]
+visible = false
+layout_mode = 2
+tab_alignment = 1
+metadata/_tab_index = 1
+
+[node name="H2Container" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Sounds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gjw40")
+theme_type_variation = &"H2Container"
+
+[node name="Control" type="Control" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Sounds/H2Container"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Sounds/H2Container/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer/Sounds/H2Container/Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="Sequencer" type="TabBar" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer/SoundsPanel/Control/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
 [node name="LoopEditorPanel" type="PanelContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/MiddleContainer"]
 layout_mode = 2
 theme = ExtResource("2_gjw40")
@@ -189,6 +279,7 @@ theme_type_variation = &"H1Container"
 
 [node name="TabContainer" type="TabContainer" parent="UI/MarginContainer/MainContainer/HSplitContainer/EditorPanel"]
 layout_mode = 2
+theme = ExtResource("2_gjw40")
 current_tab = 0
 tab_focus_mode = 0
 
@@ -201,7 +292,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 32.0
+offset_top = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_gjw40")

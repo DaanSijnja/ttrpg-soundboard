@@ -24,8 +24,6 @@ offset_left = 16.0
 grow_vertical = 2
 theme = ExtResource("1_71mmy")
 theme_type_variation = &"H3SettingLabel"
-text = "text
-"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
@@ -53,8 +51,7 @@ grow_vertical = 2
 theme = ExtResource("1_71mmy")
 theme_type_variation = &"SettingSliderInputField"
 theme_override_icons/updown = SubResource("ImageTexture_bsovb")
-min_value = -10.0
-max_value = 10.0
+max_value = 0.0
 step = 0.1
 alignment = 1
 
@@ -70,8 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_71mmy")
 theme_type_variation = &"SettingSlider"
-min_value = -3.0
-max_value = 3.0
+max_value = 0.0
 step = 0.1
 ticks_on_borders = true
 

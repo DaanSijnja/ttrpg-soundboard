@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dal3mu1i562bq"]
+[gd_scene load_steps=6 format=3 uid="uid://dal3mu1i562bq"]
 
 [ext_resource type="Theme" uid="uid://bp06ya462w4my" path="res://assets/styles/themes/default/default_theme.tres" id="1_v8h4t"]
 [ext_resource type="Script" path="res://scripts/application/UI/setting_file_selection.gd" id="2_fl52j"]
 [ext_resource type="StyleBox" uid="uid://b0bgno0m1cbgb" path="res://assets/styles/themes/default/containers/h3_container.tres" id="2_je8a7"]
 [ext_resource type="Texture2D" uid="uid://nkbcrk8a3ccx" path="res://assets/sprites/application/UI/icons/open_icon.png" id="4_oln4t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iri30"]
+content_margin_left = 0.0
+bg_color = Color(0.988235, 0.972549, 0.878431, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="SettingFileSelection" type="Control"]
 custom_minimum_size = Vector2(100, 32)
@@ -71,7 +79,8 @@ offset_top = -4.0
 offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/normal = ExtResource("2_je8a7")
+theme_override_colors/icon_normal_color = Color(0.658824, 0.647059, 0.584314, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_iri30")
 icon = ExtResource("4_oln4t")
 icon_alignment = 1
 expand_icon = true
